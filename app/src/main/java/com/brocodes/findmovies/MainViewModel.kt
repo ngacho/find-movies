@@ -28,17 +28,19 @@ class MainViewModel @ViewModelInject constructor(
 
     private fun getTrendingMovies() = viewModelScope.launch {
         _moviesList.postValue(Resource.loading(null))
-        apiService.getTrendingMovies(apiKey = BuildConfig.API_KEY).let {
+        apiService.getTrendingMovies().let {
+            Log.i("MainViewModel", "getTrendingMovies: Code is ${it.code()}")
             if (it.isSuccessful && it.body() != null) {
                 _moviesList.postValue(Resource.success(it.body()))
                 it.body().let { movieResponse ->
                     movieResponse?.movies?.forEach { movie ->
-                        Log.i("MainViewModel", "getTrendingMovies: ${movie.name}")
+                        val name = movie.originalName ?: movie.originalTitle
+                        Log.i("MainViewModel", "getTrendingMovies: $name")
                     }
                 }
 
             } else {
-                Log.e("MainViewModel", "getTrendingMovies: ${it.errorBody().toString()}")
+                Log.e("MainViewModel", "getTrendingMovies: ${it.errorBody()?.charStream()}")
                 _moviesList.postValue(Resource.error(it.errorBody().toString(), null))
             }
         }

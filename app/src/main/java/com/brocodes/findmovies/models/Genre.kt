@@ -1,8 +1,10 @@
 package com.brocodes.findmovies.models
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Genre(
-    @SerializedName("id") val id : Int,
-    @SerializedName("name") val name : String
+    @Json(name="id") val id : Int,
+    @Json(name="name") val name : String
 )

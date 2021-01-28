@@ -1,13 +1,14 @@
 package com.brocodes.findmovies.models
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-
+@JsonClass(generateAdapter = true)
 data class BelongsToCollection (
 
-    @SerializedName("id") val id : Int,
-    @SerializedName("name") val name : String,
-    @SerializedName("poster_path") val poster_path : String,
-    @SerializedName("backdrop_path") val backdrop_path : String
+    @Json(name="id") val id : Int,
+    @Json(name="name") val name : String,
+    @Json(name="poster_path") val poster_path : String,
+    @Json(name="backdrop_path") val backdrop_path : String
 )
 

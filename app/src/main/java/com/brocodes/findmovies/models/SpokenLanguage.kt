@@ -1,9 +1,11 @@
 package com.brocodes.findmovies.models
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class SpokenLanguage(
-    @SerializedName("english_name") val english_name: String,
-    @SerializedName("iso_639_1") val iso6391: String,
-    @SerializedName("name") val name: String
+    @Json(name="english_name") val english_name: String,
+    @Json(name="iso_639_1") val iso6391: String,
+    @Json(name="name") val name: String
 )

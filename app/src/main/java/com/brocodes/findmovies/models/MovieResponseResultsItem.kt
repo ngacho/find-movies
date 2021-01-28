@@ -1,20 +1,24 @@
 package com.brocodes.findmovies.models
 
-import com.google.gson.annotations.SerializedName
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class MovieResponseResultsItem(
-    @SerializedName("backdrop_path") val backdropPath : String,
-    @SerializedName("first_air_date") val firstAirDate : String,
-    @SerializedName("genre_ids") val genreIds : List<Int>,
-    @SerializedName("id") val id : Int,
-    @SerializedName("name") val name : String,
-    @SerializedName("origin_country") val originCountry : List<String>,
-    @SerializedName("original_language") val originalLanguage : String,
-    @SerializedName("original_name") val originalName : String,
-    @SerializedName("overview") val overview : String,
-    @SerializedName("poster_path") val posterPath : String,
-    @SerializedName("vote_average") val voteAverage : Double,
-    @SerializedName("vote_count") val voteCount : Int,
-    @SerializedName("popularity") val popularity : Double,
-    @SerializedName("media_type") val mediaType : String
+    @Json(name="backdrop_path") val backdropPath : String?,
+    @Json(name="first_air_date") val firstAirDate : String?,
+    @Json(name="genre_ids") val genreIds : List<Int>?,
+    @Json(name="id") val id : Int?,
+    @Json(name="name") val name : String?,
+    @Json(name="origin_country") val originCountry : List<String>?,
+    @Json(name="original_language") val originalLanguage : String?,
+    @Json(name="original_name") val originalName : String?,
+    @Json(name="original_title") val originalTitle : String?,
+    @Json(name="overview") val overview : String?,
+    @Json(name="poster_path") val posterPath : String?,
+    @Json(name="vote_average") val voteAverage : Double?,
+    @Json(name="vote_count") val voteCount : Int?,
+    @Json(name="popularity") val popularity : Double?,
+    @Json(name="media_type") val mediaType : String?
 )
